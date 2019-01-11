@@ -14,10 +14,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.springer.patryk.decisionaid.R
+import org.kodein.di.KodeinAware
 import timber.log.Timber
 import java.util.*
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), KodeinAware {
 
 	private var mFragmentSnackbars: ArrayList<Snackbar>? = null
 	private var mAutoBindViews = true
