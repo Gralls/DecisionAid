@@ -14,7 +14,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.springer.patryk.decisionaid.R
+import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
+import org.kodein.di.android.support.closestKodein
 import timber.log.Timber
 import java.util.*
 
@@ -22,7 +24,7 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 
 	private var mFragmentSnackbars: ArrayList<Snackbar>? = null
 	private var mAutoBindViews = true
-
+	override val kodein: Kodein by closestKodein()
 	private var mDialog: AlertDialog? = null
 	open val mTitleStringId: Int = -1
 	val mBaseActivity: BaseActivity

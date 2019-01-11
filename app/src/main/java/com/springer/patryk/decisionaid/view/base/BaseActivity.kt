@@ -12,7 +12,9 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.springer.patryk.decisionaid.R
 import kotlinx.android.synthetic.main.base_content.*
+import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
 import timber.log.Timber
 
 abstract class BaseActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedListener,
@@ -23,6 +25,7 @@ abstract class BaseActivity : AppCompatActivity(), FragmentManager.OnBackStackCh
 			val fm: FragmentManager = supportFragmentManager
 			return getFragmentAt(fm.backStackEntryCount) as? BaseFragment
 		}
+	override val kodein: Kodein by closestKodein()
 
 	protected abstract val mLayoutResId: Int
 
