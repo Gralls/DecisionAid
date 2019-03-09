@@ -7,4 +7,10 @@ class EndpointsName {
 			const val REGISTER = "users"
 		}
 	}
+
+	class Groups {
+		companion object {
+			const val USER_GROUPS = "users/{userId}/groups"
+		}
+	}
 }

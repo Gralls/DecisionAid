@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
 	androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
-	protected var mItems: ArrayList<T> = ArrayList()
+	protected var mItems: List<T> = emptyList()
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 		return setViewHolder(parent)
@@ -21,7 +21,7 @@ abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
 	protected abstract fun setViewHolder(parent: ViewGroup): VH
 	protected abstract fun bindView(item: T, viewHolder: VH)
 
-	open fun setDataset(items: ArrayList<T>) {
+	open fun setDataset(items: List<T>) {
 		this.mItems = items
 		notifyDataSetChanged()
 	}

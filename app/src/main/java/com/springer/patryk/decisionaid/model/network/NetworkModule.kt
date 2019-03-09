@@ -1,6 +1,7 @@
 package com.springer.patryk.decisionaid.model.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.springer.patryk.decisionaid.model.network.endpoints.GroupsWS
 import com.springer.patryk.decisionaid.model.network.endpoints.UserWS
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,5 +33,10 @@ val networkModule = Kodein.Module(name = "network") {
 	bind<UserWS>() with provider {
 		val retrofit: Retrofit = instance()
 		retrofit.create(UserWS::class.java)
+	}
+
+	bind<GroupsWS>() with provider {
+		val retrofit: Retrofit = instance()
+		retrofit.create(GroupsWS::class.java)
 	}
 }
