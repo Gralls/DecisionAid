@@ -14,3 +14,6 @@ fun Context.showToast(msg: String, duration: Int = Toast.LENGTH_LONG) {
 fun Context.showToast(msgId: Int, duration: Int = Toast.LENGTH_LONG) {
 	Toast.makeText(this, msgId, duration).show()
 }
+
+fun Context.getStringOrNull(stringId: Int?): String? =
+	if (stringId == null) null else getString(stringId)

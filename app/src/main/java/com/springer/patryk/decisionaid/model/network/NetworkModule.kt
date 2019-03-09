@@ -1,11 +1,13 @@
 package com.springer.patryk.decisionaid.model.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.springer.patryk.decisionaid.model.network.endpoints.UserWS
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,8 +24,13 @@ val networkModule = Kodein.Module(name = "network") {
 				.writeTimeout(10, TimeUnit.SECONDS).build()
 	}
 	bind<Retrofit>() with singleton {
-		Retrofit.Builder().baseUrl("http://150.254.78.162:1732")
+		Retrofit.Builder().baseUrl("http://10.0.2.2:1732")
 				.addCallAdapterFactory(CoroutineCallAdapterFactory())
 				.addConverterFactory(GsonConverterFactory.create()).client(instance()).build()
+	}
+
+	bind<UserWS>() with provider {
+		val retrofit: Retrofit = instance()
+		retrofit.create(UserWS::class.java)
 	}
 }

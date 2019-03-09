@@ -8,7 +8,13 @@ import com.springer.patryk.korkidajmi.view.base.BasePresenter
  */
 interface LoginContract {
 
-	interface View : BaseFragmentView {}
+	interface View : BaseFragmentView {
+		fun onLoginSuccess(userId: Int)
+		fun setLoginError(errorId: Int?)
+		fun setPasswordError(errorId: Int?)
+	}
 
-	interface Presenter : BasePresenter {}
+	interface Presenter : BasePresenter {
+		fun onLoginClicked(login: String, password: String)
+	}
 }

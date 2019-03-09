@@ -3,4 +3,7 @@
 	<string name="net_error_invalid_login_data">Podane dane są niepoprawne</string>
 	<string name="net_error_service_unavailable">Serwis chwilowo niedostępny</string>
 	<string name="net_error_no_internet_connection">Brak połączenia z internetem</string>
+	<string name="msg_invalid_login_data">Niepoprawne dane logowania</string>
+	<string name="msg_user_already_exists">Ten login jest już zajęty</string>
+	<string name="msg_error_occurred">Wystąpił błąd, spróbuj ponownie</string>
 </resources>
