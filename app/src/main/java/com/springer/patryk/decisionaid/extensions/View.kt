@@ -1,7 +1,7 @@
 package com.springer.patryk.decisionaid.extensions
 
-import android.support.design.widget.Snackbar
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * Created by Patryk Springer on 2019-01-11.

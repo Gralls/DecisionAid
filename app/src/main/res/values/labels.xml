@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_password_field">Hasło</string>
+    <string name="label_login_field">Login</string>
+    <string name="label_login_button">Zaloguj</string>
+    <string name="label_register_button">Załóż konto</string>
+</resources>

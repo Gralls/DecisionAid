@@ -5,40 +5,43 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.springer.patryk.decisionaid"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+	compileSdkVersion 28
+	defaultConfig {
+		applicationId "com.springer.patryk.decisionaid"
+		minSdkVersion 21
+		targetSdkVersion 28
+		versionCode 1
+		versionName "1.0"
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
-    implementation "com.android.support:design:$supportLibraryVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutineAdapterVersion"
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
-    implementation "com.jakewharton.timber:timber:$timberVersion"
-    implementation "org.kodein.di:kodein-di-generic-jvm:$kodeinVersion"
-    implementation "org.kodein.di:kodein-di-framework-android-support:$kodeinVersion"
-    implementation "com.github.MarcinMoskala:KotlinAndroidViewBindings:$kotlinViewBindingsVersion"
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+	implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
+	implementation "com.google.android.material:material:$supportLibraryVersion"
+	implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+	implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+	implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+	implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutineAdapterVersion"
+	implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+	implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+	implementation "com.jakewharton.timber:timber:$timberVersion"
+	implementation "org.kodein.di:kodein-di-generic-jvm:$kodeinVersion"
+	implementation "org.kodein.di:kodein-di-framework-android-support:$kodeinVersion"
+	implementation "com.github.MarcinMoskala:KotlinAndroidViewBindings:$kotlinViewBindingsVersion"
+
+	testImplementation 'junit:junit:4.12'
+	androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }

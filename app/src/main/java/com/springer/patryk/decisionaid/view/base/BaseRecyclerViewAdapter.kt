@@ -1,10 +1,10 @@
 package com.springer.patryk.decisionaid.view.base
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
-		RecyclerView.Adapter<VH>() {
+	androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
 	protected var mItems: ArrayList<T> = ArrayList()
 

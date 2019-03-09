@@ -5,15 +5,15 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.DialogFragment
-import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
+import com.google.android.material.snackbar.Snackbar
 import com.springer.patryk.decisionaid.R
 import timber.log.Timber
 import java.util.*
@@ -164,7 +164,7 @@ abstract class BaseDialogFragment : DialogFragment(), BaseDialogFragmentView {
 		val snackbar =
 			Snackbar.make(mBaseActivity.findViewById(android.R.id.content), msg, durationMs)
 		with(snackbar.view) {
-			val snackbarTextId = android.support.design.R.id.snackbar_text
+			val snackbarTextId = R.id.snackbar_text
 			val textView = this.findViewById(snackbarTextId) as TextView
 			textView.setTextColor(Color.WHITE)
 			this.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent))
@@ -264,7 +264,7 @@ abstract class BaseDialogFragment : DialogFragment(), BaseDialogFragmentView {
 		}
 		val snackbar = Snackbar.make(view!!, msg, durationMs)
 		with(snackbar.view) {
-			val snackbarTextId = android.support.design.R.id.snackbar_text
+			val snackbarTextId = R.id.snackbar_text
 			val textView = this.findViewById(snackbarTextId) as TextView
 			textView.setTextColor(Color.WHITE)
 			this.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent))
