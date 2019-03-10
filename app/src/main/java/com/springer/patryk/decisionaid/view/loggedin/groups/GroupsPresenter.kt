@@ -4,6 +4,7 @@ import com.springer.patryk.decisionaid.model.UsersGroup
 import com.springer.patryk.decisionaid.model.network.NetResult
 import com.springer.patryk.decisionaid.model.network.endpoints.GroupsWS
 import com.springer.patryk.decisionaid.view.base.BasePresenterImpl
+import com.springer.patryk.decisionaid.view.loggedin.groups.model.NewGroup
 import kotlinx.coroutines.launch
 import org.kodein.di.generic.instance
 import retrofit2.Response
@@ -43,5 +44,21 @@ class GroupsPresenter(private val mView: GroupsContract.View) : GroupsContract.P
 
 	override fun onAddNewGroupClicked() {
 		mView.openNewGroupDialog()
+	}
+
+	override fun onNewGroupSubmit(groupName: String, adminId: Int) {
+		launch {
+			val result =
+				safeApiCall { mGroupsWS.createNewGroup(NewGroup(groupName, adminId)).await() }
+			if (result is NetResult.Success) {
+				handleNewGroupResponse(result.data)
+			}
+		}
+	}
+
+	private fun handleNewGroupResponse(response: Response<UsersGroup>) {
+		when (response.code()) {
+			HttpURLConnection.HTTP_CREATED -> refreshGroups(response.body()?.mAdmin?.mId ?: -1)
+		}
 	}
 }

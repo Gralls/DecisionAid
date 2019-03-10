@@ -12,11 +12,12 @@ interface GroupsContract {
 	interface View : BaseFragmentView {
 		fun showGroupList(groups: List<UsersGroup>)
 		fun showEmptyList()
-        fun openNewGroupDialog()
+		fun openNewGroupDialog()
 	}
 
 	interface Presenter : BasePresenter {
 		fun refreshGroups(userId: Int)
-        fun onAddNewGroupClicked()
+		fun onAddNewGroupClicked()
+		fun onNewGroupSubmit(groupName: String, adminId: Int)
 	}
 }

@@ -11,6 +11,7 @@ class EndpointsName {
 	class Groups {
 		companion object {
 			const val USER_GROUPS = "users/{userId}/groups"
+			const val GROUPS = "groups"
 		}
 	}
 }

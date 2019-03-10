@@ -1,5 +1,7 @@
 package com.springer.patryk.decisionaid.view.loggedin.groups
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,6 +21,11 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 
 	override val layoutResId: Int
 		get() = R.layout.fragment_groups
+
+	companion object {
+		const val NEW_GROUP_KEY = "newGroupName"
+		const val NEW_GROUP_CODE = 1231
+	}
 
 	private val mPresenter: GroupsContract.Presenter by lazy { GroupsPresenter(this) }
 	private val mAdapter: GroupAdapter by lazy { GroupAdapter() }
@@ -41,11 +48,22 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 	}
 
 	override fun showEmptyList() {
+		//TODO
 	}
 
 	override fun openNewGroupDialog() {
 		val dialog = NewGroupDialogFragment()
-		dialog.setTargetFragment(this, 12321)
+		dialog.setTargetFragment(this, NEW_GROUP_CODE)
 		dialog.show(mBaseActivity.supportFragmentManager, NewGroupDialogFragment.TAG)
+	}
+
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+		if (requestCode == NEW_GROUP_CODE && resultCode == Activity.RESULT_OK) {
+			data?.let {
+				val name: String = it.getStringExtra(NEW_GROUP_KEY)
+				mPresenter.onNewGroupSubmit(name,
+						PreferenceHelper.getCurrentUserId(requireContext()))
+			}
+		}
 	}
 }
