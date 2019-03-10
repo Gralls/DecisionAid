@@ -40,4 +40,8 @@ class GroupsPresenter(private val mView: GroupsContract.View) : GroupsContract.P
 
 		}
 	}
+
+	override fun onAddNewGroupClicked() {
+		mView.openNewGroupDialog()
+	}
 }

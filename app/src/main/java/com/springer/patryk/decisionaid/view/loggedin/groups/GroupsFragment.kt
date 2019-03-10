@@ -7,7 +7,9 @@ import com.springer.patryk.decisionaid.R
 import com.springer.patryk.decisionaid.model.UsersGroup
 import com.springer.patryk.decisionaid.model.helpers.PreferenceHelper
 import com.springer.patryk.decisionaid.view.base.BaseFragment
+import com.springer.patryk.decisionaid.view.loggedin.LoggedInActivity
 import com.springer.patryk.decisionaid.view.loggedin.groups.adapters.GroupAdapter
+import com.springer.patryk.decisionaid.view.loggedin.groups.dialogs.NewGroupDialogFragment
 import kotlinx.android.synthetic.main.fragment_groups.*
 
 /**
@@ -24,6 +26,9 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 		super.onViewCreated(view, savedInstanceState)
 		rv_groups_list.adapter = mAdapter
 		rv_groups_list.layoutManager = GridLayoutManager(context, 2)
+		(mBaseActivity as LoggedInActivity).setBottomFabAction(R.drawable.ic_add) {
+			mPresenter.onAddNewGroupClicked()
+		}
 	}
 
 	override fun onResume() {
@@ -36,5 +41,11 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 	}
 
 	override fun showEmptyList() {
+	}
+
+	override fun openNewGroupDialog() {
+		val dialog = NewGroupDialogFragment()
+		dialog.setTargetFragment(this, 12321)
+		dialog.show(mBaseActivity.supportFragmentManager, NewGroupDialogFragment.TAG)
 	}
 }
