@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
 import androidx.fragment.app.Fragment
@@ -17,7 +16,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import timber.log.Timber
 
-abstract class BaseActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedListener,
+abstract class BaseActivity : AppCompatActivity(),
 		KodeinAware {
 
 	val mCurrentFragment: BaseFragment?
@@ -33,7 +32,6 @@ abstract class BaseActivity : AppCompatActivity(), FragmentManager.OnBackStackCh
 		super.onCreate(savedInstanceState)
 		super.setContentView(mLayoutResId)
 		Timber.d("onCreate")
-		supportFragmentManager.addOnBackStackChangedListener(this)
 	}
 
 	override fun setContentView(layoutResID: Int) {
@@ -80,22 +78,7 @@ abstract class BaseActivity : AppCompatActivity(), FragmentManager.OnBackStackCh
 		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 	}
 
-	override fun onBackStackChanged() {
-		shouldDisplayHomeUp()
-	}
 
-	open fun shouldDisplayHomeUp() {
-		var canGoBack: Boolean = supportFragmentManager.backStackEntryCount > 0
-		canGoBack = canGoBack || parentActivityIntent != null
-		val actionBar: ActionBar? = supportActionBar
-		actionBar?.let {
-			it.setHomeButtonEnabled(true)
-			if (canGoBack) {
-				it.setDisplayHomeAsUpEnabled(canGoBack)
-			}
-		}
-		Timber.d("setDisplayHomeAsUpEnabled $canGoBack")
-	}
 
 	fun setContent(noveltyFragment: BaseFragment) {
 		supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)

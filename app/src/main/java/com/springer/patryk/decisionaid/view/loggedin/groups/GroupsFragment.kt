@@ -11,6 +11,7 @@ import com.springer.patryk.decisionaid.model.helpers.PreferenceHelper
 import com.springer.patryk.decisionaid.view.base.BaseFragment
 import com.springer.patryk.decisionaid.view.loggedin.LoggedInActivity
 import com.springer.patryk.decisionaid.view.loggedin.groups.adapters.GroupAdapter
+import com.springer.patryk.decisionaid.view.loggedin.groups.details.GroupDetailsFragment
 import com.springer.patryk.decisionaid.view.loggedin.groups.dialogs.NewGroupDialogFragment
 import kotlinx.android.synthetic.main.fragment_groups.*
 
@@ -28,7 +29,7 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 	}
 
 	private val mPresenter: GroupsContract.Presenter by lazy { GroupsPresenter(this) }
-	private val mAdapter: GroupAdapter by lazy { GroupAdapter() }
+	private val mAdapter: GroupAdapter by lazy { GroupAdapter(mPresenter) }
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		rv_groups_list.adapter = mAdapter
@@ -65,5 +66,9 @@ class GroupsFragment : GroupsContract.View, BaseFragment() {
 						PreferenceHelper.getCurrentUserId(requireContext()))
 			}
 		}
+	}
+
+	override fun openGroupsQuestion(groupId: Int) {
+		mBaseActivity.setChildContent(GroupDetailsFragment.newInstance(groupId))
 	}
 }

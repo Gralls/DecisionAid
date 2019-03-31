@@ -37,7 +37,8 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 		super.onAttach(context)
 		if (context !is BaseActivity) {
 			throw IllegalArgumentException(
-					"BaseFragment must be attached to BaseActivity. " + context.javaClass.name + " does not extends BaseActivity")
+				"BaseFragment must be attached to BaseActivity. " + context.javaClass.name + " does not extends BaseActivity"
+			)
 		}
 	}
 
@@ -47,10 +48,11 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 		mFragmentSnackbars = ArrayList()
 	}
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-							  savedInstanceState: Bundle?): View? {
+	override fun onCreateView(
+		inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+	): View? {
 		Timber.d("onCreateView")
-		setHasOptionsMenu(false)
+		setHasOptionsMenu(true)
 		return inflater.inflate(layoutResId, container, false)
 	}
 
@@ -129,32 +131,37 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 	/**
 	 * @see .showFragmentSnackbar
 	 */
-	fun showFragmentSnackbar(msgResId: Int, actionMsgResId: Int,
-							 actionCallback: View.OnClickListener) {
+	fun showFragmentSnackbar(
+		msgResId: Int, actionMsgResId: Int, actionCallback: View.OnClickListener
+	) {
 		if (!isAdded) {
 			return
 		}
-		showFragmentSnackbar(getString(msgResId), getString(actionMsgResId), actionCallback,
-				Snackbar.LENGTH_LONG)
+		showFragmentSnackbar(
+			getString(msgResId), getString(actionMsgResId), actionCallback, Snackbar.LENGTH_LONG
+		)
 	}
 
 	/**
 	 * @see .showFragmentSnackbar
 	 */
-	fun showFragmentSnackbar(msgResId: Int, actionMsgResId: Int,
-							 actionCallback: View.OnClickListener, durationMs: Int) {
+	fun showFragmentSnackbar(
+		msgResId: Int, actionMsgResId: Int, actionCallback: View.OnClickListener, durationMs: Int
+	) {
 		if (!isAdded) {
 			return
 		}
-		showFragmentSnackbar(getString(msgResId), getString(actionMsgResId), actionCallback,
-				durationMs)
+		showFragmentSnackbar(
+			getString(msgResId), getString(actionMsgResId), actionCallback, durationMs
+		)
 	}
 
 	/**
 	 * Shows snackbar that will be dismissed on fragment replacement
 	 */
-	fun showFragmentSnackbar(msg: String, actionMsg: String?,
-							 actionCallback: View.OnClickListener?) {
+	fun showFragmentSnackbar(
+		msg: String, actionMsg: String?, actionCallback: View.OnClickListener?
+	) {
 		if (!isAdded) {
 			return
 		}
@@ -164,8 +171,9 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 	/**
 	 * Shows snackbar that will be dismissed on fragment replacement
 	 */
-	fun showFragmentSnackbar(msg: String, actionMsg: String?, actionCallback: View.OnClickListener?,
-							 durationMs: Int) {
+	fun showFragmentSnackbar(
+		msg: String, actionMsg: String?, actionCallback: View.OnClickListener?, durationMs: Int
+	) {
 		if (!isAdded) {
 			return
 		}
@@ -244,8 +252,9 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 	/**
 	 * @see .showSnackbar
 	 */
-	fun showSnackbar(msgResId: Int, actionMsgResId: Int, actionCallback: View.OnClickListener,
-					 durationMs: Int) {
+	fun showSnackbar(
+		msgResId: Int, actionMsgResId: Int, actionCallback: View.OnClickListener, durationMs: Int
+	) {
 		if (!isAdded) {
 			return
 		}
@@ -265,8 +274,9 @@ abstract class BaseFragment : Fragment(), KodeinAware {
 	/**
 	 * Shows snackbar that will live longer then fragment
 	 */
-	fun showSnackbar(msg: String, actionMsg: String?, actionCallback: View.OnClickListener?,
-					 durationMs: Int) {
+	fun showSnackbar(
+		msg: String, actionMsg: String?, actionCallback: View.OnClickListener?, durationMs: Int
+	) {
 		if (!isAdded) {
 			return
 		}

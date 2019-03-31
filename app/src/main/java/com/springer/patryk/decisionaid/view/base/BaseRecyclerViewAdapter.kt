@@ -9,7 +9,7 @@ abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
 	protected var mItems: List<T> = emptyList()
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-		return setViewHolder(parent)
+		return setViewHolder(parent, viewType)
 	}
 
 	override fun onBindViewHolder(holder: VH, position: Int) {
@@ -18,7 +18,7 @@ abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
 
 	override fun getItemCount(): Int = mItems.size
 
-	protected abstract fun setViewHolder(parent: ViewGroup): VH
+	protected abstract fun setViewHolder(parent: ViewGroup, viewType: Int): VH
 	protected abstract fun bindView(item: T, viewHolder: VH)
 
 	open fun setDataset(items: List<T>) {

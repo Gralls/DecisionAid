@@ -13,11 +13,13 @@ interface GroupsContract {
 		fun showGroupList(groups: List<UsersGroup>)
 		fun showEmptyList()
 		fun openNewGroupDialog()
+		fun openGroupsQuestion(groupId: Int)
 	}
 
 	interface Presenter : BasePresenter {
 		fun refreshGroups(userId: Int)
 		fun onAddNewGroupClicked()
 		fun onNewGroupSubmit(groupName: String, adminId: Int)
+		fun onGroupClicked(groupId: Int)
 	}
 }

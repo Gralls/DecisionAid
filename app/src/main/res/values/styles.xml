@@ -1,7 +1,7 @@
 <resources>
 
 	<style name="AppTheme"
-		   parent="Theme.MaterialComponents.Light.NoActionBar">
+		parent="Theme.MaterialComponents.Light.NoActionBar">
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,23 +9,24 @@
 	</style>
 
 	<style name="AppTheme.Splash"
-		   parent="AppTheme">
+		parent="AppTheme">
 
 		<item name="android:windowBackground">@drawable/splash_background</item>
 	</style>
 
 	<style name="AppTheme.ButtonsColored"
-		   parent="Widget.AppCompat.Button.Colored">
+		parent="Widget.AppCompat.Button.Colored">
 		<item name="android:textSize">18sp</item>
 		<item name="android:textAllCaps">false</item>
 		<item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
 	</style>
 
 	<style name="AppTheme.ButtonAccent"
-		   parent="AppTheme.ButtonsColored">
+		parent="AppTheme.ButtonsColored">
 		<item name="android:textColor">@android:color/white</item>
 	</style>
 
 	<style name="AppTheme.AppBarOverlay"
-		   parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+		parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 </resources>

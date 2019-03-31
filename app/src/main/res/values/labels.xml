@@ -3,4 +3,9 @@
 
 	<string name="label_login_button">Zaloguj</string>
     <string name="label_register_button">Załóż konto</string>
+	<string name="label_question_answers_state">Udzielone odpowiedzi:</string>
+	<string name="label_closed_question_result">Rezultat:</string>
+	<string name="label_new_question_title">Dodaj nowe pytanie</string>
+	<string name="label_add_new_question">Utwórz pytanie</string>
+	<string name="label_new_question_answers">Odpowiedzi</string>
 </resources>

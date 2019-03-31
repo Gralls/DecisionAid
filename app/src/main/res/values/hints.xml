@@ -5,4 +5,5 @@
 	<string name="hint_login_field">Login</string>
 	<string name="hint_name_field">Imię</string>
 	<string name="hint_surname_field">Nazwisko</string>
+	<string name="hint_question_name">Treść pytania</string>
 </resources>

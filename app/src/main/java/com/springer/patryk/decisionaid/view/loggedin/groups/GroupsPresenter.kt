@@ -61,4 +61,8 @@ class GroupsPresenter(private val mView: GroupsContract.View) : GroupsContract.P
 			HttpURLConnection.HTTP_CREATED -> refreshGroups(response.body()?.mAdmin?.mId ?: -1)
 		}
 	}
+
+	override fun onGroupClicked(groupId: Int) {
+		mView.openGroupsQuestion(groupId)
+	}
 }
