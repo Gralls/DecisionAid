@@ -10,6 +10,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.springer.patryk.decisionaid.R
 import com.springer.patryk.decisionaid.model.Question
+import com.springer.patryk.decisionaid.model.User
 import com.springer.patryk.decisionaid.model.helpers.PreferenceHelper
 import com.springer.patryk.decisionaid.view.base.BaseFragment
 import com.springer.patryk.decisionaid.view.loggedin.LoggedInActivity
@@ -86,10 +87,17 @@ class GroupDetailsFragment : BaseFragment(), GroupDetailsContract.View {
 	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 		when (item?.itemId) {
 			R.id.menu_members_list -> {
-				mBaseActivity.setChildContent(GroupMembersFragment())
+				mPresenter.onMembersListClicked()
 			}
 		}
 		return false
+	}
+
+	override fun openMembersList(membersList: List<User>) {
+		arguments?.let {
+			val groupId = it.getInt(GROUP_ID_KEY)
+			mBaseActivity.setChildContent(GroupMembersFragment.newInstance(groupId))
+		}
 	}
 
 	override fun setGroupName(name: String) {

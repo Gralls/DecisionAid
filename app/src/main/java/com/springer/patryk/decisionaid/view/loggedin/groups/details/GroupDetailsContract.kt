@@ -1,6 +1,7 @@
 package com.springer.patryk.decisionaid.view.loggedin.groups.details
 
 import com.springer.patryk.decisionaid.model.Question
+import com.springer.patryk.decisionaid.model.User
 import com.springer.patryk.decisionaid.view.base.BaseFragmentView
 import com.springer.patryk.korkidajmi.view.base.BasePresenter
 
@@ -13,10 +14,12 @@ interface GroupDetailsContract {
 		fun refreshQuestionList(questions: List<Question>)
 		fun setGroupName(name: String)
 		fun setGroupAdmin(adminName: String, adminSurname: String)
+		fun openMembersList(membersList: List<User>)
 	}
 
 	interface Presenter : BasePresenter {
 		fun refreshQuestionList(userId: Int, groupId: Int)
 		fun refreshGroupDetails(groupId: Int)
+		fun onMembersListClicked()
 	}
 }

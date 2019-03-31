@@ -41,4 +41,8 @@ class GroupDetailsPresenter(private val mView: GroupDetailsContract.View) :
 			}
 		}
 	}
+
+	override fun onMembersListClicked() {
+		mView.openMembersList(mGroupDetails.members)
+	}
 }

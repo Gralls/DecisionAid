@@ -13,6 +13,7 @@ class EndpointsName {
 			const val USER_GROUPS = "users/{userId}/groups"
 			const val GROUPS = "groups"
 			const val GROUP_DETAILS = "groups/{groupId}"
+			const val REMOVE_GROUP_MEMBER = "groups/{groupId}/users/{userId}"
 		}
 	}
 

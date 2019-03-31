@@ -6,4 +6,6 @@
 	<string name="msg_invalid_login_data">Niepoprawne dane logowania</string>
 	<string name="msg_user_already_exists">Ten login jest już zajęty</string>
 	<string name="msg_error_occurred">Wystąpił błąd, spróbuj ponownie</string>
+	<string name="msg_user_in_group">Użytkownik jest już w tej grupie</string>
+	<string name="msg_user_not_found">Brak użytkownika o podanym loginie</string>
 </resources>

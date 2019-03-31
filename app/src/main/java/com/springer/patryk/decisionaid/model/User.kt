@@ -1,6 +1,7 @@
 package com.springer.patryk.decisionaid.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /**
  * Created by Patryk Springer on 09.03.2019.
@@ -17,4 +18,5 @@ data class User(
 		@SerializedName("password")
 		val mPassword: String,
 		@SerializedName("groups")
-		val mGroupsList: List<UsersGroup>)
+		val mGroupsList: List<UsersGroup>
+) : Serializable

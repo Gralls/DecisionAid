@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="80dp"
+	>
+
+	<ImageView
+		android:id="@+id/iv_row_member_picture"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_person"
+		android:tint="@color/colorAccent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		/>
+
+	<TextView
+		android:id="@+id/tv_row_member_name"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textSize="16sp"
+		app:layout_constraintBottom_toTopOf="@id/tv_row_member_surname"
+		app:layout_constraintEnd_toStartOf="@id/iv_row_member_delete"
+		app:layout_constraintStart_toEndOf="@id/iv_row_member_picture"
+		app:layout_constraintTop_toTopOf="@id/iv_row_member_picture"
+		tools:text="Jan"
+		/>
+
+	<TextView
+		android:id="@+id/tv_row_member_surname"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textSize="16sp"
+		app:layout_constraintBottom_toBottomOf="@id/iv_row_member_picture"
+		app:layout_constraintEnd_toStartOf="@id/iv_row_member_delete"
+		app:layout_constraintStart_toEndOf="@id/iv_row_member_picture"
+		app:layout_constraintTop_toBottomOf="@id/tv_row_member_name"
+		tools:text="Kowalski"
+		/>
+
+	<ImageView
+		android:id="@+id/iv_row_member_delete"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:src="@drawable/ic_remove"
+		android:tint="@color/colorAccent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		/>
+</androidx.constraintlayout.widget.ConstraintLayout>
