@@ -7,13 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.springer.patryk.decisionaid.R
 import com.springer.patryk.decisionaid.model.Question
 import com.springer.patryk.decisionaid.view.base.BaseRecyclerViewAdapter
+import com.springer.patryk.decisionaid.view.loggedin.groups.details.GroupDetailsContract
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.QuestionDetailsContract
 import kotlinx.android.synthetic.main.row_question_closed.view.*
 import kotlinx.android.synthetic.main.row_question_open.view.*
 
 /**
  * Created by Patryk Springer on 27.03.2019.
  */
-class QuestionListAdapter : BaseRecyclerViewAdapter<Question, QuestionViewHolder>() {
+class QuestionListAdapter(private val mPresenter: GroupDetailsContract.Presenter) :
+	BaseRecyclerViewAdapter<Question, QuestionViewHolder>() {
 
 	private val mOpenQuestionType: Int = 0
 	private val mClosedQuestionType: Int = 1
@@ -42,6 +45,9 @@ class QuestionListAdapter : BaseRecyclerViewAdapter<Question, QuestionViewHolder
 		override fun bind(question: Question) = with(mItemView) {
 			tv_row_question_open_name.text = question.mName
 			tv_row_question_open_answers.text = "${question.answerCount}/${question.totalUsers}"
+			setOnClickListener {
+				mPresenter.onQuestionClicked(question.mId)
+			}
 		}
 	}
 

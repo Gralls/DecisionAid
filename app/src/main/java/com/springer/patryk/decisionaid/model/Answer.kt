@@ -9,5 +9,7 @@ data class Answer(
 	@SerializedName("id")
 	val mId: Int = -1,
 	@SerializedName("answer")
-	var mAnswer: String = ""
+	var mAnswer: String = "",
+	@SerializedName("position")
+	var mPosition: Int = 0
 )

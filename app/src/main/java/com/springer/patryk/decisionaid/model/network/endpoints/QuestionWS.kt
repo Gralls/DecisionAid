@@ -1,6 +1,8 @@
 package com.springer.patryk.decisionaid.model.network.endpoints
 
+import com.springer.patryk.decisionaid.model.Answer
 import com.springer.patryk.decisionaid.model.Question
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.model.AnswerRequest
 import com.springer.patryk.decisionaid.view.loggedin.questions.newquestion.QuestionRequest
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -39,4 +41,20 @@ interface QuestionWS {
 		@Body
 		question: QuestionRequest
 	): Deferred<Response<Question>>
+
+	@GET(EndpointsName.Question.QUESTION_DETAILS)
+	fun getQuestion(
+		@Path("questionId")
+		questionId: Int
+	): Deferred<Response<Question>>
+
+	@POST(EndpointsName.Question.ANSWER_QUESTION)
+	fun answerQuestion(
+		@Path("userId")
+		userId: Int,
+		@Path("questionId")
+		questionId: Int,
+		@Body
+		answer: AnswerRequest
+	): Deferred<Response<Unit>>
 }

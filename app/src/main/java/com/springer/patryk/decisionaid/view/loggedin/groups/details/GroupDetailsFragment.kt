@@ -16,6 +16,7 @@ import com.springer.patryk.decisionaid.view.base.BaseFragment
 import com.springer.patryk.decisionaid.view.loggedin.LoggedInActivity
 import com.springer.patryk.decisionaid.view.loggedin.groupmembers.GroupMembersFragment
 import com.springer.patryk.decisionaid.view.loggedin.groups.details.adapters.QuestionListAdapter
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.QuestionDetailsFragment
 import com.springer.patryk.decisionaid.view.loggedin.questions.newquestion.NewQuestionFragment
 import kotlinx.android.synthetic.main.fragment_group_details.*
 
@@ -31,7 +32,7 @@ class GroupDetailsFragment : BaseFragment(), GroupDetailsContract.View {
 			this
 		)
 	}
-	private val mAdapter: QuestionListAdapter by lazy { QuestionListAdapter() }
+	private val mAdapter: QuestionListAdapter by lazy { QuestionListAdapter(mPresenter) }
 
 	companion object {
 		const val NEW_QUESTION_REQ_CODE = 94721
@@ -113,5 +114,9 @@ class GroupDetailsFragment : BaseFragment(), GroupDetailsContract.View {
 		if (requestCode == NEW_QUESTION_REQ_CODE && resultCode == Activity.RESULT_OK) {
 			refreshView()
 		}
+	}
+
+	override fun openQuestionDetails(questionId: Int) {
+		mBaseActivity.setChildContent(QuestionDetailsFragment.newInstance(questionId))
 	}
 }

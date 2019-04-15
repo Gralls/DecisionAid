@@ -15,11 +15,13 @@ interface GroupDetailsContract {
 		fun setGroupName(name: String)
 		fun setGroupAdmin(adminName: String, adminSurname: String)
 		fun openMembersList(membersList: List<User>)
+		fun openQuestionDetails(questionId: Int)
 	}
 
 	interface Presenter : BasePresenter {
 		fun refreshQuestionList(userId: Int, groupId: Int)
 		fun refreshGroupDetails(groupId: Int)
 		fun onMembersListClicked()
+		fun onQuestionClicked(questionId: Int)
 	}
 }

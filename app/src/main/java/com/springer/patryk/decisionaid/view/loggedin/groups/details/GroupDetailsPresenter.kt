@@ -45,4 +45,8 @@ class GroupDetailsPresenter(private val mView: GroupDetailsContract.View) :
 	override fun onMembersListClicked() {
 		mView.openMembersList(mGroupDetails.members)
 	}
+
+	override fun onQuestionClicked(questionId: Int) {
+		mView.openQuestionDetails(questionId)
+	}
 }

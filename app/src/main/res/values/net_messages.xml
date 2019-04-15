@@ -8,4 +8,6 @@
 	<string name="msg_error_occurred">Wystąpił błąd, spróbuj ponownie</string>
 	<string name="msg_user_in_group">Użytkownik jest już w tej grupie</string>
 	<string name="msg_user_not_found">Brak użytkownika o podanym loginie</string>
+	<string name="msg_answer_saved">Odpowiedź zapisana</string>
+	<string name="msg_question_already_answered">Udzieliłeś już odpowiedzi na to pytanie</string>
 </resources>

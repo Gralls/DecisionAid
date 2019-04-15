@@ -22,6 +22,7 @@ class EndpointsName {
 			const val USERS_QUESTIONS = "users/{userId}/questions"
 			const val QUESTION_DETAILS = "questions/{questionId}"
 			const val NEW_QUESTION = "users/{userId}/groups/{groupId}"
+			const val ANSWER_QUESTION = "users/{userId}/questions/{questionId}"
 		}
 	}
 }
