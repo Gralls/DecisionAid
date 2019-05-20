@@ -2,22 +2,23 @@ package com.springer.patryk.decisionaid.view.loggedin.questions.details
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.marcinmoskala.kotlinandroidviewbindings.bindToText
 import com.springer.patryk.decisionaid.R
-import com.springer.patryk.decisionaid.model.Answer
 import com.springer.patryk.decisionaid.model.helpers.PreferenceHelper
 import com.springer.patryk.decisionaid.view.base.BaseFragment
+import com.springer.patryk.decisionaid.view.base.viewpager.BaseViewPagerFragment
 import com.springer.patryk.decisionaid.view.loggedin.LoggedInActivity
 import com.springer.patryk.decisionaid.view.loggedin.questions.details.adapters.AnswersListAdapter
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.model.Preferences
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.preferenceanswer.QuestionPreferenceAnswersFragment
 import kotlinx.android.synthetic.main.fragment_question_details.*
 
 /**
  * Created by Patryk Springer on 04.04.2019.
  */
-class QuestionDetailsFragment : BaseFragment(), QuestionDetailsContract.View {
+class QuestionDetailsFragment : BaseViewPagerFragment(), QuestionDetailsContract.View {
+
+	override val mListOfFragments: MutableList<BaseFragment> = mutableListOf()
 
 	override val layoutResId: Int = R.layout.fragment_question_details
 
@@ -60,19 +61,17 @@ class QuestionDetailsFragment : BaseFragment(), QuestionDetailsContract.View {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		val touchHelperCallback = AnswerTouchHelperCallback(mPresenter as OnItemTouchListener)
 
-		val touchHelper = ItemTouchHelper(touchHelperCallback)
-		touchHelper.attachToRecyclerView(rv_question_details_answers)
-		rv_question_details_answers.adapter = mAdapter
-		rv_question_details_answers.layoutManager = LinearLayoutManager(context)
 		btn_question_details_submit.setOnClickListener {
 			mPresenter.onSubmitButtonClicked(PreferenceHelper.getCurrentUserId(requireContext()))
 		}
 	}
 
-	override fun showAnswers(answers: List<Answer>) {
-		mAdapter.setDataset(answers)
+	override fun showAnswers(answers: List<Preferences>) {
+		answers.forEach {
+			mListOfFragments.add(QuestionPreferenceAnswersFragment.newInstance(it))
+		}
+		notifyAdapter()
 	}
 
 	override fun notifyItemMoved(fromPosition: Int, toPosition: Int) {

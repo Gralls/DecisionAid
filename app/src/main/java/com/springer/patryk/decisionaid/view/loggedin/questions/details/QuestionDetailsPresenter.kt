@@ -7,6 +7,7 @@ import com.springer.patryk.decisionaid.model.network.NetResult
 import com.springer.patryk.decisionaid.model.network.endpoints.QuestionWS
 import com.springer.patryk.decisionaid.view.base.BasePresenterImpl
 import com.springer.patryk.decisionaid.view.loggedin.questions.details.model.AnswerRequest
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.model.Preferences
 import kotlinx.coroutines.launch
 import org.kodein.di.generic.instance
 import java.net.HttpURLConnection
@@ -16,10 +17,11 @@ import java.util.*
  * Created by Patryk Springer on 04.04.2019.
  */
 class QuestionDetailsPresenter(private val mView: QuestionDetailsContract.View) :
-	QuestionDetailsContract.Presenter, BasePresenterImpl(mView), OnItemTouchListener {
+	QuestionDetailsContract.Presenter, BasePresenterImpl(mView) {
 
 	val questionWS: QuestionWS by instance()
 	var mAnswers: List<Answer> = emptyList()
+	var mPreferenceMatrix: MutableList<Preferences> = mutableListOf()
 	var mQuestionId: Int = -1
 	override fun refreshQuestionDetails(questionId: Int) {
 		mQuestionId = questionId
@@ -28,15 +30,21 @@ class QuestionDetailsPresenter(private val mView: QuestionDetailsContract.View) 
 			if (result is NetResult.Success) {
 				val question = result.data.body() ?: Question()
 				mAnswers = question.mAnswers
+				generatePreferenceMatrix()
 				mView.questionName = question.mName
-				mView.showAnswers(mAnswers)
+				mView.showAnswers(mPreferenceMatrix)
 			}
 		}
 	}
 
-	override fun onItemMoved(fromPosition: Int, toPosition: Int) {
-		Collections.swap(mAnswers, fromPosition, toPosition)
-		mView.notifyItemMoved(fromPosition, toPosition)
+	private fun generatePreferenceMatrix() {
+		mAnswers.forEachIndexed { firstIndex, firstAnswer ->
+			mAnswers.forEachIndexed { secondIndex, secondAnswer ->
+				if (firstIndex != secondIndex) {
+					mPreferenceMatrix.add(Preferences(firstAnswer, secondAnswer))
+				}
+			}
+		}
 	}
 
 	override fun onSubmitButtonClicked(userId: Int) {
@@ -46,7 +54,7 @@ class QuestionDetailsPresenter(private val mView: QuestionDetailsContract.View) 
 			}
 			val result = safeApiCall {
 				questionWS.answerQuestion(
-					userId, mQuestionId, AnswerRequest(mAnswers)
+					userId, mQuestionId, AnswerRequest(mPreferenceMatrix)
 				).await()
 			}
 			if (result is NetResult.Success) {

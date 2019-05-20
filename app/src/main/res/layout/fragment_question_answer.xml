@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cv_question_first_answer"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:minHeight="100dp"
+		app:cardCornerRadius="8dp"
+		app:cardElevation="16dp"
+		app:cardUseCompatPadding="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/cv_question_second_answer"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		>
+
+		<TextView
+			android:id="@+id/tv_question_first_answer"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:padding="16dp"
+			android:text="Odpowiedź"
+			/>
+	</androidx.cardview.widget.CardView>
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cv_question_second_answer"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:minHeight="100dp"
+		app:cardCornerRadius="8dp"
+		app:cardElevation="16dp"
+		app:cardUseCompatPadding="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@id/cv_question_first_answer"
+		app:layout_constraintTop_toTopOf="parent"
+		>
+
+		<TextView
+			android:id="@+id/tv_question_second_answer"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:padding="16dp"
+			android:text="Odpowiedź"
+			/>
+	</androidx.cardview.widget.CardView>
+
+	<androidx.appcompat.widget.AppCompatSeekBar
+		android:id="@+id/sb_question_preference"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:padding="16dp"
+		app:layout_constraintBottom_toBottomOf="@id/til_question_preference_value"
+		app:layout_constraintEnd_toStartOf="@id/til_question_preference_value"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/til_question_preference_value"
+		/>
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/til_question_preference_value"
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:layout_margin="16dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/cv_question_first_answer"
+		>
+
+		<EditText
+			android:id="@+id/et_question_preference_value"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:focusable="false"
+			android:gravity="center"
+			android:imeOptions="actionDone"
+			android:maxLines="1"
+			tools:text="0.23"
+			/>
+	</com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

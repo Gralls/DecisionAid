@@ -8,5 +8,5 @@ import com.springer.patryk.decisionaid.model.Answer
  */
 data class AnswerRequest(
 	@SerializedName("answers")
-	val mAnswers: List<Answer> = emptyList()
+	val mAnswers: List<Preferences> = emptyList()
 )

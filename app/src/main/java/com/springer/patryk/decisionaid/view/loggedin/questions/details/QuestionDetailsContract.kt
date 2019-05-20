@@ -2,6 +2,7 @@ package com.springer.patryk.decisionaid.view.loggedin.questions.details
 
 import com.springer.patryk.decisionaid.model.Answer
 import com.springer.patryk.decisionaid.view.base.BaseFragmentView
+import com.springer.patryk.decisionaid.view.loggedin.questions.details.model.Preferences
 import com.springer.patryk.korkidajmi.view.base.BasePresenter
 
 /**
@@ -11,7 +12,7 @@ interface QuestionDetailsContract {
 
 	interface View : BaseFragmentView {
 		var questionName: String
-		fun showAnswers(answers: List<Answer>)
+		fun showAnswers(answers: List<Preferences>)
 		fun notifyItemMoved(fromPosition: Int, toPosition: Int)
 	}
 
