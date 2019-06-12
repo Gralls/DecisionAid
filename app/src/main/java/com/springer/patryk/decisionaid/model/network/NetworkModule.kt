@@ -26,9 +26,11 @@ val networkModule = Kodein.Module(name = "network") {
 			.writeTimeout(10, TimeUnit.SECONDS).build()
 	}
 	bind<Retrofit>() with singleton {
-		Retrofit.Builder().baseUrl("http://10.0.2.2:1732")
-			.addCallAdapterFactory(CoroutineCallAdapterFactory())
-			.addConverterFactory(GsonConverterFactory.create()).client(instance()).build()
+		Retrofit.Builder().baseUrl(
+			"http://150.254.78.162:1732"
+		).addCallAdapterFactory(CoroutineCallAdapterFactory()).addConverterFactory(
+			GsonConverterFactory.create()
+		).client(instance()).build()
 	}
 
 	bind<UserWS>() with provider {
